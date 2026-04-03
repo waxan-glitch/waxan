@@ -2,329 +2,559 @@
 <html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>万宣企业管理（重庆）有限公司 (waxan) - 综合性企业管理集团</title>
-    <link rel="stylesheet" href="style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>万宣企业管理（重庆）有限公司 | 全链条项目孵化与品牌运营平台</title>
+    <!-- Font Awesome 6 (免费图标库) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'PingFang SC', 'Microsoft YaHei', 'Helvetica Neue', sans-serif;
+            color: #1e2a3e;
+            background: #fff;
+            line-height: 1.5;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* 导航栏 */
+        .navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(255,255,255,0.96);
+            backdrop-filter: blur(8px);
+            box-shadow: 0 2px 15px rgba(0,0,0,0.05);
+            z-index: 1000;
+            padding: 12px 0;
+        }
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            text-decoration: none;
+        }
+        .logo-text {
+            font-size: 28px;
+            font-weight: 800;
+            background: linear-gradient(135deg, #1e3a5f, #2c5a8c);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        .logo-sub {
+            font-size: 14px;
+            color: #5a6e7c;
+            border-left: 1px solid #ccc;
+            padding-left: 10px;
+        }
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 32px;
+        }
+        .nav-menu a {
+            text-decoration: none;
+            font-weight: 500;
+            color: #2c3e50;
+            transition: 0.3s;
+        }
+        .nav-menu a:hover {
+            color: #d4af37;
+        }
+        .menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 28px;
+            cursor: pointer;
+        }
+
+        /* 通用区块 */
+        .section {
+            padding: 80px 0;
+        }
+        .section-title {
+            font-size: 36px;
+            font-weight: 700;
+            text-align: center;
+            margin-bottom: 16px;
+            color: #1e3a5f;
+        }
+        .section-subtitle {
+            text-align: center;
+            color: #6c757d;
+            margin-bottom: 48px;
+            font-size: 18px;
+        }
+
+        /* Banner */
+        .banner {
+            background: linear-gradient(135deg, #0b2b3f 0%, #1a4a6f 100%);
+            color: white;
+            padding: 160px 0 120px;
+            margin-top: 70px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        .banner::before {
+            content: "";
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,215,0,0.08) 0%, rgba(0,0,0,0) 70%);
+            animation: rotate 30s linear infinite;
+        }
+        @keyframes rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+        .banner-content {
+            position: relative;
+            z-index: 2;
+        }
+        .banner-title {
+            font-size: 48px;
+            font-weight: 800;
+            margin-bottom: 16px;
+        }
+        .corporate-slogan {
+            font-size: 28px;
+            font-weight: 500;
+            color: #d4af37;
+            letter-spacing: 4px;
+            margin-bottom: 20px;
+        }
+        .banner-subtitle {
+            font-size: 24px;
+            font-weight: 500;
+            margin-bottom: 24px;
+        }
+        .banner-desc {
+            max-width: 700px;
+            margin: 0 auto 32px;
+            font-size: 18px;
+            opacity: 0.9;
+        }
+        .btn-primary {
+            display: inline-block;
+            background: #d4af37;
+            color: #1e3a5f;
+            padding: 12px 32px;
+            border-radius: 40px;
+            text-decoration: none;
+            font-weight: 700;
+            transition: 0.3s;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+        .btn-primary:hover {
+            background: #c5a028;
+            transform: translateY(-2px);
+        }
+
+        /* 关于我们 */
+        .about-content {
+            display: flex;
+            gap: 48px;
+            flex-wrap: wrap;
+            align-items: center;
+        }
+        .about-text {
+            flex: 1.2;
+        }
+        .about-text p {
+            margin-bottom: 16px;
+        }
+        .about-visual {
+            flex: 0.8;
+            background: linear-gradient(145deg, #f0f4f8, #e6ecf2);
+            border-radius: 32px;
+            padding: 40px 20px;
+            text-align: center;
+            box-shadow: 0 15px 30px rgba(0,0,0,0.05);
+        }
+        .about-visual i {
+            font-size: 100px;
+            color: #d4af37;
+            margin-bottom: 20px;
+        }
+        .stats-grid {
+            display: flex;
+            gap: 24px;
+            margin-top: 40px;
+            flex-wrap: wrap;
+        }
+        .stat-card {
+            background: #f8f9fa;
+            border-radius: 24px;
+            padding: 24px;
+            text-align: center;
+            flex: 1;
+            transition: 0.3s;
+        }
+        .stat-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+        }
+        .stat-number {
+            font-size: 36px;
+            font-weight: 800;
+            color: #d4af37;
+        }
+
+        /* 子公司卡片 */
+        .subsidiaries-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 32px;
+        }
+        .sub-card {
+            background: #fff;
+            border-radius: 28px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+            transition: 0.3s;
+            overflow: hidden;
+            border: 1px solid #edf2f7;
+        }
+        .sub-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 30px -10px rgba(0,0,0,0.1);
+        }
+        .sub-icon {
+            background: linear-gradient(135deg, #f0f4fa, #e9eef4);
+            padding: 30px 0;
+            text-align: center;
+        }
+        .sub-icon i {
+            font-size: 56px;
+            color: #1e3a5f;
+        }
+        .sub-content {
+            padding: 24px;
+        }
+        .sub-title {
+            font-size: 22px;
+            font-weight: 700;
+            margin-bottom: 12px;
+            color: #1e3a5f;
+        }
+        .sub-list {
+            list-style: none;
+            margin-top: 12px;
+        }
+        .sub-list li {
+            padding: 6px 0;
+            border-bottom: 1px dashed #e2e8f0;
+            font-size: 14px;
+        }
+
+        /* 核心能力 */
+        .cap-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 32px;
+        }
+        .cap-item {
+            background: #f8fafc;
+            border-radius: 24px;
+            padding: 32px 24px;
+            text-align: center;
+            transition: 0.3s;
+        }
+        .cap-item:hover {
+            background: #fff;
+            box-shadow: 0 15px 25px rgba(0,0,0,0.05);
+        }
+        .cap-item i {
+            font-size: 48px;
+            color: #d4af37;
+            margin-bottom: 20px;
+        }
+
+        /* 案例卡片 */
+        .case-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 32px;
+        }
+        .case-card {
+            background: #fff;
+            border-radius: 24px;
+            overflow: hidden;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+        }
+        .case-visual {
+            background: linear-gradient(145deg, #1e3a5f, #0f2a44);
+            padding: 50px 20px;
+            text-align: center;
+        }
+        .case-visual i {
+            font-size: 64px;
+            color: #d4af37;
+        }
+        .case-content {
+            padding: 24px;
+        }
+
+        /* 联系 */
+        .contact-wrapper {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 48px;
+            background: #f8fafc;
+            border-radius: 40px;
+            padding: 48px;
+        }
+        .contact-info {
+            flex: 1;
+        }
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            margin-bottom: 32px;
+        }
+        .contact-icon {
+            width: 52px;
+            height: 52px;
+            background: #e2e8f0;
+            border-radius: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            color: #1e3a5f;
+        }
+        .contact-note {
+            flex: 1;
+            background: #fff;
+            border-radius: 28px;
+            padding: 32px;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.02);
+        }
+
+        /* 页脚 */
+        .footer {
+            background: #0b2b3f;
+            color: #b0c4de;
+            padding: 48px 0 24px;
+        }
+        .footer-inner {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+        .footer-logo .logo-text {
+            font-size: 28px;
+            background: linear-gradient(135deg, #fff, #d4af37);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        .footer-links ul {
+            list-style: none;
+        }
+        .footer-links a {
+            color: #b0c4de;
+            text-decoration: none;
+        }
+        .footer-bottom {
+            text-align: center;
+            border-top: 1px solid #2c4b6e;
+            padding-top: 24px;
+            font-size: 14px;
+        }
+
+        @media (max-width: 768px) {
+            .menu-toggle {
+                display: block;
+            }
+            .nav-menu {
+                display: none;
+                width: 100%;
+                flex-direction: column;
+                background: white;
+                padding: 20px;
+            }
+            .nav-menu.show {
+                display: flex;
+            }
+            .banner-title {
+                font-size: 32px;
+            }
+            .section-title {
+                font-size: 28px;
+            }
+            .contact-wrapper {
+                padding: 28px;
+            }
+        }
+    </style>
 </head>
 <body>
-    <!-- 导航栏 -->
     <nav class="navbar">
         <div class="container nav-container">
             <a href="#home" class="logo">
-                <img src="images/logo.png" alt="万宣企业管理 waxan" class="logo-img">
-                <span class="logo-subtitle">企业管理（重庆）有限公司</span>
+                <span class="logo-text">万宣</span>
+                <span class="logo-sub">企业管理（重庆）有限公司</span>
             </a>
-            <button class="menu-toggle" id="menuToggle">
-                <span class="icon">☰</span>
-            </button>
+            <button class="menu-toggle" id="menuToggle">☰</button>
             <ul class="nav-menu" id="navMenu">
                 <li><a href="#home">首页</a></li>
-                <li><a href="#about">关于我们</a></li>
-                <li><a href="#subsidiaries">子公司体系</a></li>
-                <li><a href="#capabilities">核心能力</a></li>
-                <li><a href="#cases">案例展示</a></li>
-                <li><a href="#contact">联系我们</a></li>
+                <li><a href="#about">关于</a></li>
+                <li><a href="#subsidiaries">子公司</a></li>
+                <li><a href="#capabilities">能力</a></li>
+                <li><a href="#cases">案例</a></li>
+                <li><a href="#contact">联系</a></li>
             </ul>
         </div>
     </nav>
 
-    <!-- 首页Banner -->
     <section id="home" class="banner">
         <div class="container">
             <div class="banner-content">
                 <h1 class="banner-title">万宣企业管理（重庆）有限公司</h1>
-                <!-- 企业文化口号 -->
                 <div class="corporate-slogan">万策聚力 · 宣其德行</div>
                 <p class="banner-subtitle">综合性企业管理集团 · 七家专业子公司协同</p>
-                <p class="banner-desc">我们专注于项目开发、品牌发掘和产品包装销售，提供从0到1的全链条孵化服务。10+年行业经验，服务2000+客户，执行5000+活动。</p>
+                <p class="banner-desc">项目开发 · 品牌发掘 · 产品包装销售 —— 从0到1的全链条孵化服务。10+年经验，服务2000+客户，执行5000+活动。</p>
                 <a href="#subsidiaries" class="btn-primary">了解子公司体系</a>
             </div>
         </div>
-        <div class="banner-overlay"></div>
     </section>
 
-    <!-- 关于我们 -->
-    <section id="about" class="section about">
+    <section id="about" class="section">
         <div class="container">
             <h2 class="section-title">关于我们</h2>
             <p class="section-subtitle">专业、务实、创新的企业管理合作伙伴</p>
             <div class="about-content">
                 <div class="about-text">
-                    <p>万宣企业管理（重庆）有限公司成立于<strong>2015年7月</strong>，历经10+年发展，已成长为一家拥有<strong>近70人专业团队</strong>的综合性企业管理集团。</p>
-                    <p>我们专注于<strong>文旅项目开发运营、高端消费品品牌孵化、农产品品牌升级</strong>等领域，通过"项目开发+品牌包装+全案策划"一体化服务，帮助客户实现商业价值最大化。</p>
-                    <p>截至目前，我们已经服务了<strong>2000+客户</strong>，成功执行了<strong>5000+活动</strong>，积累了丰富的实战经验与行业资源。</p>
-                    <p><strong>核心使命：</strong>为有潜质的项目、品牌和产品提供一站式孵化服务，帮助客户实现价值变现。</p>
-                    <p><strong>核心价值观：</strong>以"万策聚力·宣其德行"为核心理念，强调团队协作、诚信经营和创新驱动。</p>
+                    <p>万宣企业管理（重庆）有限公司成立于<strong>2015年7月</strong>，历经10余年发展，已成长为一家拥有<strong>近70人专业团队</strong>的综合性企业管理集团。</p>
+                    <p>我们专注于<strong>文旅项目开发运营、高端消费品品牌孵化、农产品品牌升级</strong>等领域，通过“项目开发+品牌包装+全案策划”一体化服务，帮助客户实现商业价值最大化。</p>
+                    <p>截至目前，已服务<strong>2000+客户</strong>，成功执行<strong>5000+活动</strong>，积累了丰富的实战经验与行业资源。</p>
+                    <p><strong>核心使命：</strong>为有潜质的项目、品牌和产品提供一站式孵化服务，实现价值变现。<br>
+                    <strong>价值观：</strong>以“万策聚力·宣其德行”为核心理念，团队协作、诚信经营、创新驱动。</p>
                 </div>
-                <div class="about-stats">
-                    <div class="stat-card">
-                        <div class="stat-number">10+</div>
-                        <div class="stat-label">年行业经验</div>
-                    </div>
-                    <div class="stat-card">
-                        <div class="stat-number">7</div>
-                        <div class="stat-label">专业子公司</div>
-                    </div>
-                    <div class="stat-card">
-                        <div class="stat-number">2000+</div>
-                        <div class="stat-label">服务客户</div>
-                    </div>
-                    <div class="stat-card">
-                        <div class="stat-number">5000+</div>
-                        <div class="stat-label">成功活动</div>
-                    </div>
+                <div class="about-visual">
+                    <i class="fas fa-handshake"></i>
+                    <p style="margin-top: 16px; color:#2c5a8c;">十年同行 · 彼此成就</p>
                 </div>
+            </div>
+            <div class="stats-grid">
+                <div class="stat-card"><div class="stat-number">10+</div><div>年行业经验</div></div>
+                <div class="stat-card"><div class="stat-number">7</div><div>专业子公司</div></div>
+                <div class="stat-card"><div class="stat-number">2000+</div><div>服务客户</div></div>
+                <div class="stat-card"><div class="stat-number">5000+</div><div>成功活动</div></div>
             </div>
         </div>
     </section>
 
-    <!-- 子公司体系 -->
-    <section id="subsidiaries" class="section subsidiaries">
+    <section id="subsidiaries" class="section" style="background:#f9fbfd;">
         <div class="container">
             <h2 class="section-title">子公司体系</h2>
-            <p class="section-subtitle">七家专业子公司紧密协同，构建完整企业管理服务生态</p>
+            <p class="section-subtitle">七家专业子公司紧密协同 · 全链条服务能力</p>
             <div class="subsidiaries-grid">
-                <div class="subsidiary-card">
-                    <div class="subsidiary-icon"><span class="icon">🎨</span></div>
-                    <h3 class="subsidiary-title">广告制作与设计</h3>
-                    <p class="subsidiary-role"><strong>核心角色：</strong>视觉创意与制作</p>
-                    <ul class="subsidiary-business">
-                        <li>创意设计服务：品牌VIS、宣传册、包装设计</li>
-                        <li>数字印刷技术：小批量、个性化印刷</li>
-                        <li>展览展示设计：展台展厅空间设计搭建</li>
-                        <li>影视广告制作：全流程创意策划与制作</li>
-                    </ul>
-                </div>
-                <div class="subsidiary-card">
-                    <div class="subsidiary-icon"><span class="icon">📈</span></div>
-                    <h3 class="subsidiary-title">营销策划与品牌咨询</h3>
-                    <p class="subsidiary-role"><strong>核心角色：</strong>品牌战略与营销</p>
-                    <ul class="subsidiary-business">
-                        <li>品牌战略规划：差异化定位与品牌管理</li>
-                        <li>数字营销方案：整合社交媒体、信息流广告</li>
-                        <li>消费者行为研究：大数据洞察与决策指导</li>
-                        <li>危机公关管理：舆情监测与品牌维护</li>
-                    </ul>
-                </div>
-                <div class="subsidiary-card">
-                    <div class="subsidiary-icon"><span class="icon">🎭</span></div>
-                    <h3 class="subsidiary-title">活动策划与执行</h3>
-                    <p class="subsidiary-role"><strong>核心角色：</strong>活动运营与执行</p>
-                    <ul class="subsidiary-business">
-                        <li>大型活动统筹：政府会议到商业庆典全流程管理</li>
-                        <li>舞美工程实施：专业舞台设计、灯光音响系统</li>
-                        <li>演艺资源整合：艺人经纪合作网络</li>
-                        <li>安全保障体系：专业安保团队与应急预案</li>
-                    </ul>
-                </div>
-                <div class="subsidiary-card">
-                    <div class="subsidiary-icon"><span class="icon">#</span></div>
-                    <h3 class="subsidiary-title">新媒体运营与数字营销</h3>
-                    <p class="subsidiary-role"><strong>核心角色：</strong>数字渠道运营</p>
-                    <ul class="subsidiary-business">
-                        <li>内容矩阵建设：图文、视频、直播多形式内容</li>
-                        <li>数据驱动优化：流量监测与用户行为分析</li>
-                        <li>KOL合作管理：达人资源库与精准传播</li>
-                        <li>社群运营体系：私域流量池与会员成长机制</li>
-                    </ul>
-                </div>
-                <div class="subsidiary-card">
-                    <div class="subsidiary-icon"><span class="icon">🛒</span></div>
-                    <h3 class="subsidiary-title">电商直播与供应链</h3>
-                    <p class="subsidiary-role"><strong>核心角色：</strong>电商与供应链</p>
-                    <ul class="subsidiary-business">
-                        <li>直播基地运营：专业直播间设备与场景搭建</li>
-                        <li>主播培训体系：标准化课程与专业团队培养</li>
-                        <li>供应链管理系统：优质供应商整合与选品标准</li>
-                        <li>物流配送方案：头部物流对接与仓储优化</li>
-                    </ul>
-                </div>
-                <div class="subsidiary-card">
-                    <div class="subsidiary-icon"><span class="icon">🤖</span></div>
-                    <h3 class="subsidiary-title">新兴科技与AI应用</h3>
-                    <p class="subsidiary-role"><strong>核心角色：</strong>科技赋能与创新</p>
-                    <ul class="subsidiary-business">
-                        <li>智能创意生成：AI图像生成与广告创意</li>
-                        <li>数据分析平台：定制化BI系统与智能决策</li>
-                        <li>虚拟现实技术：VR/AR线上展厅与产品演示</li>
-                        <li>程序化广告投放：智能广告系统与算法优化</li>
-                    </ul>
-                </div>
-                <div class="subsidiary-card">
-                    <div class="subsidiary-icon"><span class="icon">🏢</span></div>
-                    <h3 class="subsidiary-title">项目孵化与管理</h3>
-                    <p class="subsidiary-role"><strong>核心角色：</strong>项目孵化与投后管理</p>
-                    <ul class="subsidiary-business">
-                        <li>项目评估体系：市场潜力、团队能力量化评估</li>
-                        <li>成长监测机制：OKR管理工具与动态调整</li>
-                        <li>孵化资源配置：政府政策、产业资本、技术专家整合</li>
-                        <li>全链条孵化服务：从0到1的一站式解决方案</li>
-                    </ul>
-                </div>
-            </div>
-            <div class="coordination-section">
-                <h3 class="coordination-title">协同工作机制</h3>
-                <p class="coordination-desc">七家子公司通过标准化流程体系紧密协同，形成"需求分析-方案定制-资源调度-执行落地-效果评估"的完整闭环，为客户提供一站式解决方案。</p>
-                <div class="coordination-steps">
-                    <div class="coordination-step"><div class="step-number">1</div><h4>需求分析与项目评估</h4><p>项目孵化与管理主导，联合营销策划公司进行市场调研与可行性分析</p></div>
-                    <div class="coordination-step"><div class="step-number">2</div><h4>品牌战略与方案设计</h4><p>营销策划与品牌咨询牵头，协同广告制作与设计完成视觉体系构建</p></div>
-                    <div class="coordination-step"><div class="step-number">3</div><h4>多渠道整合营销执行</h4><p>新媒体运营公司与电商直播公司协同，实现线上线下全渠道覆盖</p></div>
-                    <div class="coordination-step"><div class="step-number">4</div><h4>活动落地与效果监测</h4><p>活动策划与执行负责现场实施，新兴科技公司提供数据支持与智能优化</p></div>
-                </div>
+                <div class="sub-card"><div class="sub-icon"><i class="fas fa-palette"></i></div><div class="sub-content"><h3 class="sub-title">广告制作与设计</h3><p>创意设计、数字印刷、展览展示、影视广告</p><ul class="sub-list"><li>品牌VIS、包装设计</li><li>小批量个性化印刷</li><li>展台展厅搭建</li></ul></div></div>
+                <div class="sub-card"><div class="sub-icon"><i class="fas fa-chart-line"></i></div><div class="sub-content"><h3 class="sub-title">营销策划与品牌咨询</h3><p>品牌战略、数字营销、消费者洞察、危机公关</p><ul class="sub-list"><li>差异化定位</li><li>社交媒体整合</li><li>舆情监测与品牌维护</li></ul></div></div>
+                <div class="sub-card"><div class="sub-icon"><i class="fas fa-calendar-alt"></i></div><div class="sub-content"><h3 class="sub-title">活动策划与执行</h3><p>大型活动统筹、舞美工程、演艺资源、安全保障</p><ul class="sub-list"><li>政府/商业全流程</li><li>专业舞台灯光音响</li><li>艺人经纪合作</li></ul></div></div>
+                <div class="sub-card"><div class="sub-icon"><i class="fas fa-share-alt"></i></div><div class="sub-content"><h3 class="sub-title">新媒体运营与数字营销</h3><p>内容矩阵、数据优化、KOL管理、社群运营</p><ul class="sub-list"><li>图文/视频/直播内容</li><li>流量监测与用户分析</li><li>私域流量池搭建</li></ul></div></div>
+                <div class="sub-card"><div class="sub-icon"><i class="fas fa-laptop-code"></i></div><div class="sub-content"><h3 class="sub-title">电商直播与供应链</h3><p>直播基地、主播培训、供应链管理、物流配送</p><ul class="sub-list"><li>专业直播间设备</li><li>主播孵化课程</li><li>头部物流对接</li></ul></div></div>
+                <div class="sub-card"><div class="sub-icon"><i class="fas fa-microchip"></i></div><div class="sub-content"><h3 class="sub-title">新兴科技与AI应用</h3><p>AI创意、数据分析、VR/AR、程序化广告</p><ul class="sub-list"><li>AI图像生成广告</li><li>定制化BI系统</li><li>VR线上展厅</li></ul></div></div>
+                <div class="sub-card"><div class="sub-icon"><i class="fas fa-seedling"></i></div><div class="sub-content"><h3 class="sub-title">项目孵化与管理</h3><p>项目评估、OKR跟踪、资源配置、全链条孵化</p><ul class="sub-list"><li>市场/团队量化评估</li><li>动态孵化策略</li><li>0到1一站式服务</li></ul></div></div>
             </div>
         </div>
     </section>
 
-    <!-- 核心能力 -->
-    <section id="capabilities" class="section capabilities">
+    <section id="capabilities" class="section">
         <div class="container">
             <h2 class="section-title">核心能力</h2>
             <p class="section-subtitle">基于七家子公司协同的专业能力矩阵</p>
-            <div class="capabilities-grid">
-                <div class="capability-card">
-                    <div class="capability-icon"><span class="icon">🌱</span></div>
-                    <h3 class="capability-title">项目孵化全流程管理</h3>
-                    <p class="capability-desc">建立科学的项目评估体系，从市场潜力、团队能力、资源匹配度多维度量化评估，确保孵化成功率。采用OKR管理工具进行成长监测，动态调整孵化策略。</p>
-                </div>
-                <div class="capability-card">
-                    <div class="capability-icon"><span class="icon">💎</span></div>
-                    <h3 class="capability-title">品牌价值深度挖掘</h3>
-                    <p class="capability-desc">运用SWOT模型和品牌资产评估体系，系统分析品牌现状。通过人类学调研方法挖掘文化内涵，构建独特品牌叙事体系，实现价值可视化设计。</p>
-                </div>
-                <div class="capability-card">
-                    <div class="capability-icon"><span class="icon">📡</span></div>
-                    <h3 class="capability-title">多渠道整合营销</h3>
-                    <p class="capability-desc">统筹传统媒体、社交媒体、KOL等传播渠道，制定差异化内容分发策略。基于消费者旅程地图布局营销触点，部署UTM追踪系统和舆情监测工具。</p>
-                </div>
-                <div class="capability-card">
-                    <div class="capability-icon"><span class="icon">⚙️</span></div>
-                    <h3 class="capability-title">资源整合与共享</h3>
-                    <p class="capability-desc">依托十年积累的政企合作网络，快速调动政策支持、场地资源及专项资金。整合媒体资源矩阵，实现全渠道覆盖与精准传播。</p>
-                </div>
+            <div class="cap-grid">
+                <div class="cap-item"><i class="fas fa-rocket"></i><h3>项目孵化全流程</h3><p>科学评估+OKR动态跟踪，整合政策与资本，确保成功率。</p></div>
+                <div class="cap-item"><i class="fas fa-gem"></i><h3>品牌价值深度挖掘</h3><p>SWOT分析+文化解码，构建独特叙事与视觉符号。</p></div>
+                <div class="cap-item"><i class="fas fa-chart-simple"></i><h3>多渠道整合营销</h3><p>传统+社交+KOL矩阵，UTM追踪，实时优化效果。</p></div>
+                <div class="cap-item"><i class="fas fa-handshake"></i><h3>资源整合与共享</h3><p>十年政企网络，快速调动政策、场地、媒体资源。</p></div>
             </div>
         </div>
     </section>
 
-    <!-- 案例展示 -->
-    <section id="cases" class="section cases">
+    <section id="cases" class="section" style="background:#f9fbfd;">
         <div class="container">
             <h2 class="section-title">案例展示</h2>
             <p class="section-subtitle">成功实践，见证专业实力</p>
-            <div class="cases-grid">
-                <div class="case-card">
-                    <div class="case-image"><div class="image-placeholder"><span class="icon">📱</span><span>数字化营销全案</span></div></div>
-                    <div class="case-content"><h3 class="case-title">全域数字营销体系构建</h3><p class="case-desc">整合新媒体运营、电商直播与AI智能创意，为消费品品牌打造从内容矩阵建设、KOL合作到销售转化的全链路数字营销解决方案，实现线上销售额增长300%。</p></div>
-                </div>
-                <div class="case-card">
-                    <div class="case-image"><div class="image-placeholder"><span class="icon">🍾</span><span>茅渊酒厂品牌升级</span></div></div>
-                    <div class="case-content"><h3 class="case-title">高端白酒品牌孵化</h3><p class="case-desc">品牌战略规划与视觉体系构建：通过差异化定位与品牌故事构建，助力传统酒厂在高端市场脱颖而出，实现品牌溢价与销售增长。</p></div>
-                </div>
-                <div class="case-card">
-                    <div class="case-image"><div class="image-placeholder"><span class="icon">💨</span><span>贵州风筝节</span></div></div>
-                    <div class="case-content"><h3 class="case-title">文旅活动品牌升级</h3><p class="case-desc">活动策划与整合营销：重新定位传统风筝节，注入现代元素与互动体验，实现参与人数增长80%，衍生品销售突破200万元。</p></div>
-                </div>
+            <div class="case-grid">
+                <div class="case-card"><div class="case-visual"><i class="fas fa-chart-line fa-3x"></i></div><div class="case-content"><h3>全域数字营销体系构建</h3><p>整合新媒体、电商直播与AI智能创意，实现线上销售额增长300%。</p></div></div>
+                <div class="case-card"><div class="case-visual"><i class="fas fa-wine-bottle fa-3x"></i></div><div class="case-content"><h3>高端白酒品牌孵化</h3><p>品牌战略与视觉体系重构，助力传统酒厂高端市场突围，品牌溢价显著提升。</p></div></div>
+                <div class="case-card"><div class="case-visual"><i class="fas fa-cloud-sun fa-3x"></i></div><div class="case-content"><h3>文旅活动品牌升级</h3><p>重新定位传统风筝节，参与人数增长80%，衍生品销售突破200万元。</p></div></div>
             </div>
         </div>
     </section>
 
-    <!-- 联系我们 - 已移除表单，改为提示语 -->
-    <section id="contact" class="section contact">
+    <section id="contact" class="section">
         <div class="container">
             <h2 class="section-title">联系我们</h2>
             <p class="section-subtitle">期待与您合作，共创商业价值</p>
-            <div class="contact-content">
+            <div class="contact-wrapper">
                 <div class="contact-info">
-                    <div class="contact-item">
-                        <div class="contact-icon"><span class="icon">📞</span></div>
-                        <div class="contact-details">
-                            <h3 class="contact-title">商务电话</h3>
-                            <p class="contact-text">18223570722</p>
-                        </div>
-                    </div>
-                    <div class="contact-item">
-                        <div class="contact-icon"><span class="icon">✉️</span></div>
-                        <div class="contact-details">
-                            <h3 class="contact-title">商务邮箱</h3>
-                            <p class="contact-text">waxan@foxmail.com</p>
-                        </div>
-                    </div>
-                    <div class="contact-item">
-                        <div class="contact-icon"><span class="icon">📍</span></div>
-                        <div class="contact-details">
-                            <h3 class="contact-title">办公地址</h3>
-                            <p class="contact-text">重庆留学生创业园</p>
-                        </div>
-                    </div>
+                    <div class="contact-item"><div class="contact-icon"><i class="fas fa-phone-alt"></i></div><div><h3>商务电话</h3><p>18223570722</p></div></div>
+                    <div class="contact-item"><div class="contact-icon"><i class="fas fa-envelope"></i></div><div><h3>商务邮箱</h3><p>waxan@foxmail.com</p></div></div>
+                    <div class="contact-item"><div class="contact-icon"><i class="fas fa-map-marker-alt"></i></div><div><h3>办公地址</h3><p>重庆留学生创业园</p></div></div>
                 </div>
-                <div class="contact-form">
-                    <div class="contact-note">
-                        <p>欢迎致电或发送邮件咨询业务合作，我们将尽快回复您。</p>
-                    </div>
+                <div class="contact-note">
+                    <i class="fas fa-comments" style="font-size: 40px; color:#d4af37; margin-bottom: 16px; display: inline-block;"></i>
+                    <p style="font-size: 18px; font-weight: 500;">欢迎致电或发送邮件咨询业务合作</p>
+                    <p style="margin-top: 12px;">我们将在第一时间回复您</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- 页脚 -->
     <footer class="footer">
         <div class="container">
-            <div class="footer-content">
-                <div class="footer-logo">
-                    <img src="images/logo.png" alt="万宣企业管理 waxan" class="logo-img">
-                    <p class="footer-description">综合性企业管理集团 · 七家专业子公司协同</p>
-                </div>
-                <div class="footer-links">
-                    <h3 class="footer-title">快速导航</h3>
-                    <ul>
-                        <li><a href="#home">首页</a></li>
-                        <li><a href="#about">关于我们</a></li>
-                        <li><a href="#subsidiaries">子公司体系</a></li>
-                        <li><a href="#capabilities">核心能力</a></li>
-                        <li><a href="#cases">案例展示</a></li>
-                        <li><a href="#contact">联系我们</a></li>
-                    </ul>
-                </div>
-                <div class="footer-contact">
-                    <h3 class="footer-title">联系信息</h3>
-                    <p><span class="icon">✉️</span> waxan@foxmail.com</p>
-                    <p><span class="icon">📍</span>重庆留学生创业园</p>
-                </div>
+            <div class="footer-inner">
+                <div class="footer-logo"><span class="logo-text">万宣</span><p style="margin-top: 12px;">综合性企业管理集团 · 七家专业子公司协同</p></div>
+                <div class="footer-links"><h3>快速导航</h3><ul><li><a href="#home">首页</a></li><li><a href="#about">关于我们</a></li><li><a href="#subsidiaries">子公司体系</a></li><li><a href="#cases">案例展示</a></li><li><a href="#contact">联系我们</a></li></ul></div>
+                <div class="footer-links"><h3>联系信息</h3><p><i class="fas fa-envelope"></i> waxan@foxmail.com</p><p><i class="fas fa-map-marker-alt"></i> 重庆留学生创业园</p></div>
             </div>
-            <div class="footer-bottom">
-                <p>&copy; <span id="currentYear"></span> 万宣企业管理（重庆）有限公司 (waxan) 版权所有</p>
-                <p>渝ICP备202400001号</p>
-                <!-- 页脚也可显示口号 -->
-                <p class="footer-slogan">万策聚力 · 宣其德行</p>
-            </div>
+            <div class="footer-bottom"><p>&copy; 2026 万宣企业管理（重庆）有限公司 版权所有 | 渝ICP备202400001号</p><div class="footer-slogan" style="margin-top: 12px;">万策聚力 · 宣其德行</div></div>
         </div>
     </footer>
 
     <script>
-        const menuToggle = document.getElementById('menuToggle');
-        const navMenu = document.getElementById('navMenu');
-        if (menuToggle) {
-            menuToggle.addEventListener('click', () => {
-                navMenu.classList.toggle('show');
-            });
+        const toggle = document.getElementById('menuToggle');
+        const menu = document.getElementById('navMenu');
+        if(toggle) {
+            toggle.addEventListener('click', () => menu.classList.toggle('show'));
         }
-        document.querySelectorAll('.nav-menu a').forEach(item => {
-            item.addEventListener('click', () => {
-                navMenu.classList.remove('show');
-            });
+        document.querySelectorAll('.nav-menu a').forEach(link => {
+            link.addEventListener('click', () => menu.classList.remove('show'));
         });
-        document.getElementById('currentYear').textContent = new Date().getFullYear();
+        // 平滑滚动
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function(e) {
                 e.preventDefault();
-                const targetId = this.getAttribute('href');
-                if(targetId === '#') return;
-                const targetElement = document.querySelector(targetId);
-                if(targetElement) {
-                    window.scrollTo({
-                        top: targetElement.offsetTop - 80,
-                        behavior: 'smooth'
-                    });
-                }
+                const target = document.querySelector(this.getAttribute('href'));
+                if(target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
             });
         });
     </script>
