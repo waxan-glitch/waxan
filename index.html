@@ -11,8 +11,8 @@
     <nav class="navbar">
         <div class="container nav-container">
             <a href="#home" class="logo">
-                <!-- 修复 Logo：使用文字替代图片，避免问号 -->
-                <div class="logo-text">万宣</div>
+                <!-- 修复图片路径为 logo.png -->
+                <img src="images/logo.png" alt="万宣企业管理 waxan" class="logo-img">
                 <span class="logo-subtitle">企业管理（重庆）有限公司</span>
             </a>
             <button class="menu-toggle" id="menuToggle">
@@ -226,7 +226,7 @@
         </div>
     </section>
 
-    <!-- 联系我们 - 已移除表单，仅保留联系方式，确保正规且无功能故障 -->
+    <!-- 联系我们 - 已移除表单，改为提示语 -->
     <section id="contact" class="section contact">
         <div class="container">
             <h2 class="section-title">联系我们</h2>
@@ -255,7 +255,6 @@
                         </div>
                     </div>
                 </div>
-                <!-- 不再放置表单，改为提示用户通过电话或邮件联系 -->
                 <div class="contact-form">
                     <div class="contact-note">
                         <p>欢迎致电或发送邮件咨询业务合作，我们将尽快回复您。</p>
@@ -270,7 +269,7 @@
         <div class="container">
             <div class="footer-content">
                 <div class="footer-logo">
-                    <div class="logo-text">万宣</div>
+                    <img src="images/logo.png" alt="万宣企业管理 waxan" class="logo-img">
                     <p class="footer-description">综合性企业管理集团 · 七家专业子公司协同</p>
                 </div>
                 <div class="footer-links">
@@ -297,7 +296,6 @@
         </div>
     </footer>
 
-    <!-- JavaScript -->
     <script>
         const menuToggle = document.getElementById('menuToggle');
         const navMenu = document.getElementById('navMenu');
