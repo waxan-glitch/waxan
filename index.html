@@ -5,8 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>万宣企业管理（重庆）有限公司 (waxan) - 综合性企业管理集团</title>
     <link rel="stylesheet" href="style.css">
-    
-    
 </head>
 <body>
     <!-- 导航栏 -->
@@ -289,7 +287,7 @@
         </div>
     </section>
 
-    <!-- 联系我们 -->
+    <!-- 联系我们 - 已修复表单，使用 FormSubmit 服务 -->
     <section id="contact" class="section contact">
         <div class="container">
             <h2 class="section-title">联系我们</h2>
@@ -324,19 +322,24 @@
                         </div>
                     </div>
                 </div>
+                <!-- 表单使用 FormSubmit 服务，数据将发送到 waxan@foxmail.com -->
                 <div class="contact-form">
-                    <form id="inquiryForm">
+                    <form action="https://formsubmit.co/waxan@foxmail.com" method="POST">
+                        <!-- 隐藏字段：设置邮件主题 -->
+                        <input type="hidden" name="_subject" value="万宣官网 - 新的客户咨询">
+                        <!-- 隐藏字段：提交后跳转回网站（可选） -->
+                        <input type="hidden" name="_next" value="https://www.waxan.cn">
                         <div class="form-group">
-                            <input type="text" id="name" placeholder="您的姓名" required>
+                            <input type="text" name="姓名" placeholder="您的姓名" required>
                         </div>
                         <div class="form-group">
-                            <input type="email" id="email" placeholder="电子邮箱" required>
+                            <input type="email" name="电子邮箱" placeholder="电子邮箱" required>
                         </div>
                         <div class="form-group">
-                            <input type="tel" id="phone" placeholder="联系电话">
+                            <input type="tel" name="联系电话" placeholder="联系电话">
                         </div>
                         <div class="form-group">
-                            <textarea id="message" rows="4" placeholder="项目需求或合作意向"></textarea>
+                            <textarea name="项目需求或合作意向" rows="4" placeholder="项目需求或合作意向"></textarea>
                         </div>
                         <button type="submit" class="btn-primary">提交咨询</button>
                     </form>
@@ -383,22 +386,17 @@
         const menuToggle = document.getElementById('menuToggle');
         const navMenu = document.getElementById('navMenu');
         
-        menuToggle.addEventListener('click', () => {
-            navMenu.classList.toggle('show');
-        });
+        if (menuToggle) {
+            menuToggle.addEventListener('click', () => {
+                navMenu.classList.toggle('show');
+            });
+        }
         
         // 点击菜单项后关闭菜单（移动端）
         document.querySelectorAll('.nav-menu a').forEach(item => {
             item.addEventListener('click', () => {
                 navMenu.classList.remove('show');
             });
-        });
-        
-        // 表单提交处理（模拟）
-        document.getElementById('inquiryForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-            alert('感谢您的咨询！我们将尽快与您联系。');
-            this.reset();
         });
         
         // 设置当前年份
